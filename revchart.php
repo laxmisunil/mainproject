@@ -752,20 +752,7 @@ body {
             {
                 padding-left: 0px;
             }
-            #viewdata2
-{
-    padding:4px;
-    background-color:green;
-    border:2px solid green;
-    color:white;
-    border-radius: 3px;
-}
-#viewdata2:hover
-{
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-    cursor: pointer;
-}
-#showupcoming3
+			#showupcoming3
 {
 	padding:7px;
 	border-radius: 20px;
@@ -779,23 +766,7 @@ body {
 }
 </style>
 </head>
-<?php
-if(isset($_GET["status"]))
-{
-if(($_GET["status"])==0)
-        {
-            ?>
-        
-                 <div id="snackbar">Feedback deleted successfully!</div>
-    <script> var x = document.getElementById("snackbar");
-  x.className = "show";
-  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);</script>
-              
-              <?php 
-            }
-        }
-            
-                ?>
+
 <body>
 
 <div class="sidenav">
@@ -804,12 +775,46 @@ if(($_GET["status"])==0)
   <a href="productlist.php" >Products</a><br>
   <a href="veterinarydetails4.php">Veterinary Details</a><br>
   <a href="orderreports.php" id="active">Order Statistics</a><br>
-  <a href="customerfeedbacks.php" >Feedbacks</a><br>
+  <a href="customerfeedbacks.php">Feedbacks</a><br>
   <a href="adminlogout.php" onclick="return confirm('Are you sure you want to Logout?');">Logout</a>
 </div>
-<?php
-include "connection.php";
 
+
+
+<div class="main">
+<section id="content" style="font-size:24px">
+	
+		<nav>
+			
+		<button onclick="window.history.back();" id="showupcoming3"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>&nbsp;
+	
+                <img src="logofinal.png" width="4%" style="border-radius:50%;margin-left:20cm">
+		
+			<a href="#" class="profile">
+				<p>Admin</p>
+			</a>
+		</nav>
+	
+		<main>
+			<div class="head-title">
+				<div class="left">
+					<h2>Current Revenue Graph</h2>
+					<ul class="breadcrumb">
+						
+					</ul>
+				</div>
+				
+			</div>
+
+			
+
+
+			<div class="table-data">
+				<div class="order">
+					<div class="head">
+					<?php
+
+include "connection.php";
 require_once __DIR__ . '/vendor/autoload.php';
 
 use Phpml\Regression\LeastSquares;
@@ -817,262 +822,87 @@ use Phpml\Regression\LeastSquares;
 $z = [];
 $t=[];
 
-
-?>
-
-<div class="main">
-<section id="content" style="font-size:24px">
-		<!-- NAVBAR -->
-		<nav>
-			
-			
-			
-
-			<!--input type="checkbox" id="switch-mode" hidden>
-		    <label for="switch-mode" class="switch-mode"></label>-->
-			<!--<a href="#" class="notification">-->
-				<!--<i class='bx bxs-bell' ></i>
-				<span class="num">8</span>-->
-				<button onclick="window.history.back();" id="showupcoming3"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>&nbsp;
-                <img src="logofinal.png" width="4%" style="border-radius:50%;margin-left:20cm">
-			<!--</a>-->
-			<a href="#" class="profile">
-				<p>Admin</p>
-			</a>
-		</nav>
-		<!-- NAVBAR -->
-
-		<!-- MAIN -->
-        
-		<main>
-			<div class="head-title">
-				<div class="left">
-					<h2>Current Revenue</h2>
-          <button id="viewdata2" onclick="window.location.href='revchart.php'">Show chart</button> 
-					<ul class="breadcrumb">
-						<!--<li>
-							<a href="#">Dashboard</a>
-						</li>
-						<li><i class='bx bx-chevron-right' ></i></li>
-						<li>
-							<a class="active" href="#">Home</a>
-						</li>-->
-					</ul>
-				</div>
-				<!--<a href="#" class="btn-download">
-					<i class='bx bxs-cloud-download' ></i>
-					<span class="text" style="font-size:small">Download PDF</span>
-				</a>-->
-			</div>
-
-			
-
-
-			<div class="table-data">
-				<div class="order">
-					<div class="head">
-					<form action="" method="POST" style="margin-left:19cm">
-				<div class="form-input">
-					<input type="search" class="live-search-box" name="search" id="search" placeholder="Search revenue by year..." size="19cm">
-					<input type="hidden" name="submit" style="background-color:transparent;border:transparent;color:transparent;padding:0.2px;margin:0px">
-					
-				</div>
-</form>
-					
-					</div>
-                    <?php
-
 $sel="SELECT tbl1.*,sum(tbl2.productOrderPrice) AS pro FROM tbl_order AS tbl1 INNER JOIN tbl_orderitems AS tbl2 ON tbl1.orderID=tbl2.order_ID WHERE orderStatus!=0 GROUP BY tbl1.orderYear";
 if($result=$conn->query($sel))
 {
-?>
-<table id="myTable"  class="live-search-list">
-						<thead>
-                        <tr><th>Sl No. </th><th>Year</th><th>Revenue (in Rs.)</th></tr>
-						</thead>
-
-<?php
     if($result->num_rows>0)
     {
-        
-        ?>
-					
-                        <?php 
-                $i=0;
-                while($row=$result->fetch_array())
-                {
-                  $i++;
-                ?>
-						<tbody><?php
-                        $p=$row["pro"];
+        while($row=$result->fetch_array())
+        {
+            $p=$row["pro"];
             $c=$row["orderYear"];
-            echo "<tr>";
-            echo "<td>".$i."</td>";
-            echo "<td>".$c."</td>";
-            echo "<td>Rs. ".$p."</td>";
-            echo "</tr>";
+           
 
-
-            array_push($z, [$c]);
+            array_push($z, $c);
             array_push($t, $p);
+           
+
+           
+        }
+        //$result->free();
+    }
+}
+//print_r($z);
+$string_version1 = implode(',', $z);
+$string_version2 = implode(',', $t);
+
 ?>
-							
-						</tbody>
-                        
-                <?php }
-                       
-                      // $result->free();
-                   }
-                   else
-                   {
-                       echo "<tr><td colspan='5' style='color:gray'>No feedbacks yet.</td></tr>";
-                   }
-               }
-               else
-               {
-               
-               echo "ERROR";
-               
-               }      
-                       ?>
-					</table>
-				</div>
-				
-			</div>
-		</main>
-
-
-
-        <main>
-			<div class="head-title">
-				<div class="left">
-					<h2>Expected Revenue in coming years</h2>
-          <button id="viewdata2" onclick="window.location.href='prerevchart.php'">Show chart</button> 
-					<ul class="breadcrumb">
-						<!--<li>
-							<a href="#">Dashboard</a>
-						</li>
-						<li><i class='bx bx-chevron-right' ></i></li>
-						<li>
-							<a class="active" href="#">Home</a>
-						</li>-->
-					</ul>
-				</div>
-				<!--<a href="#" class="btn-download">
-					<i class='bx bxs-cloud-download' ></i>
-					<span class="text" style="font-size:small">Download PDF</span>
-				</a>-->
-			</div>
-
-			
-
-
-			<div class="table-data">
-				<div class="order">
-					<div class="head">
-					<form action="" method="POST" style="margin-left:19cm">
-				<div class="form-input">
-					<input type="search" class="live-search-box" name="search" id="search" placeholder="Search revenue by year..." size="19cm">
-					<input type="hidden" name="submit" style="background-color:transparent;border:transparent;color:transparent;padding:0.2px;margin:0px">
 					
-				</div>
-</form>
-					
-					</div>
-                    <table>
-                        <tr>
-                            <th>Sl No.</th>
-                            <th>Year</th>
-                            <th>Expected Revenue (in Rs. )</th>
-                        </tr>
-                        <?php
+					<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<body>
+<canvas id="myChart" style="width:100%;max-width:600px"></canvas>
 
-                    $r = new LeastSquares();
-                    $r->train($z, $t);
+<script>
+var xValues = <?php echo "[".$string_version1."]"; ?>;
+var yValues = <?php echo "[".$string_version2."]"; ?>;
 
-                    $i=0;
 
-                    $j=$c+1;
-                    $go=$c+10;
-                    while($j<$go)
-                    {
-                        $i++;
-                    $res = $r->predict([$j]);
-                    echo "<tr>";
-                    echo "<td>".$i."</td>";
-                    echo "<td>".$j."</td>";
-                    if($res<0)
-                    {
-                        echo "<td>Rs. 0</td>";
-                    }
-                    else
-                    {
-                        echo "<td>Rs. ".$res."</td>";
-                    }
-                    echo "</tr>";
-                    $j++;
-                    }
+new Chart("myChart", {
+  type: "bar",
+  data: {
+    labels: xValues,
+    datasets: [{
+      fill: false,
+      lineTension: 0,
+      backgroundColor: "grey",
+      borderColor: "rgba(0,0,0,0)",
+      data: yValues
+    }]
+  },
+  options: {
+    legend: {display: false},
+    scales: {
+      yAxes: [{
+		ticks: {min: 0, max:<?php echo 5000; ?>},
+		scaleLabel: {
+			display: true,
+            labelString: 'Revenue (Rs)'}
+			}],
+			xAxes: [{
+			scaleLabel: {
+			display: true,
+            labelString: 'Year'}
+			}],
+    		}
+  			}
+			});
+</script>
+						
+		</div>
 
-                    ?>
-                    
-                    </table>
-				</div>
-				
-			</div>
+            
+
 		</main>
-		<!-- MAIN -->
+	
 	</section>
-	<!-- CONTENT -->
+	
   
 </div>
 
         
 
     </body>
-	<script src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script src = "js/main.js"></script>
-  <script>
-    jQuery(document).ready(($) => {
-
-
-$('.live-search-list tbody').each(function(){
-  $(this).attr('data-search-term', $(this).text().toLowerCase());
-});
-
-$('.live-search-box').on('keyup', function(){
-  const searchTerm = $(this).val().toLowerCase();
-  $('.live-search-list tbody').each(function(){
-    ($(this).filter('[data-search-term *= ' + searchTerm + ']').length > 0 || searchTerm.length < 1)
-      ? $(this).show()
-      : $(this).hide();      
-  });
-});
-
-$('input[class=live-search-box]').keydown(function(e){
-  if(e.keyCode == ENTER){
-    e.preventDefault();
-    e.stopPropagation();
-    
-    const toAdd = $('input[class=live-search-box]').val();
-    if (toAdd) {
-      $('<tbody/>' , {
-        'text': toAdd,      
-        'data-search-term':  toAdd.toLowerCase(),
-      }).appendTo($('table'));
-      $('input[class=live-search-box]').val('');
-      console.log('User has entered '+toAdd);        
-    }    
-  }
-});
-
-$(document).on('dblclick', 'tbody', function(){
-  $(this).fadeOut('slow',function(){
-    $(this).remove();
-  });
-});
-
-});
-
-    </script>
+	
+	
   
 </html>
