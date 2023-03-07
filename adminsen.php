@@ -752,6 +752,18 @@ body {
             {
                 padding-left: 0px;
             }
+            #showupcoming3
+{
+	padding:7px;
+	border-radius: 20px;
+	border:transparent;
+	font-size: 24px;	
+}
+#showupcoming3:hover
+{
+	cursor: pointer;
+	background-color: whitesmoke;
+}
 </style>
 </head>
 <?php
@@ -776,8 +788,10 @@ if(($_GET["status"])==0)
 <div class="sidenav">
   <a href="adminhome.php">Dashboard</a><br>
   <a href="customerlist.php">Customers</a><br>
+  <a href="pets.php">Pets</a><br>
   <a href="productlist.php" >Products</a><br>
   <a href="veterinarydetails4.php">Veterinary Details</a><br>
+  <a href="vaccinecentredetails.php">Vaccination</a><br>
   <a href="orderreports.php">Order Statistics</a><br>
   <a href="customerfeedbacks.php" id="active">Feedbacks</a><br>
   <a href="adminlogout.php" onclick="return confirm('Are you sure you want to Logout?');">Logout</a>
@@ -904,7 +918,8 @@ include "connection.php";
 			<!--<a href="#" class="notification">-->
 				<!--<i class='bx bxs-bell' ></i>
 				<span class="num">8</span>-->
-                <img src="logofinal.png" width="4%" style="border-radius:50%;margin-left:23cm">
+        <button onclick="window.history.back();" id="showupcoming3"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>&nbsp;
+                <img src="logofinal.png" width="4%" style="border-radius:50%;margin-left:20cm">
 			<!--</a>-->
 			<a href="#" class="profile">
 				<p>Admin</p>
@@ -1029,9 +1044,10 @@ $separatedsentiment3=explode(" ",$separatedsentiment4);
            
 
                $dataPoints = array( 
-                array("label"=>"Positive Reviews", "y"=>number_format((float)$positivepercentage3, 2, '.', '')),
+             
                 array("label"=>"Negative Reviews", "y"=>number_format((float)$negativepercentage3, 2, '.', '')),
                 array("label"=>"Neutral Reviews", "y"=>number_format((float)$neutralpercentage3, 2, '.', '')),
+                array("label"=>"Positive Reviews", "y"=>number_format((float)$positivepercentage3, 2, '.', '')),
                 //array("label"=>"Safari", "y"=>6.08),
                 //array("label"=>"Edge", "y"=>4.29),
                 //array("label"=>"Others", "y"=>4.59)
@@ -1051,7 +1067,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		text: ""
 	}],
 	data: [{
-		type: "pie",
+		type: "bar",
 		yValueFormatString: "#,##0.00\"%\"",
 		indexLabel: "{label} ({y})",
 		dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
