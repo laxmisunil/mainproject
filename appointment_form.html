@@ -1,0 +1,150 @@
+<html>
+    <head>
+        <title>Appointment Form</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            body
+            {
+                font-size: 15px;
+                font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            }
+            .navigation
+            {
+                display: flex;
+                margin-top: 20px;
+                margin-left: 8.5cm;
+                margin-right: 8cm;  
+            }
+            .item
+            {
+                padding: 2px 30px 2px 30px;
+                text-decoration: none;
+                color: black;
+            }
+            .item:hover
+            {
+                color: rgb(197, 110, 3);
+            }
+            #div2
+            {
+                background-color:rgb(248, 238, 223);
+                padding: 2px 10px 2px 10px;
+                margin-top: 15px;
+                font-weight: lighter;
+                font-size: 30px;
+            }
+            hr
+            {
+                height:1px;
+                border-width:0;
+                color:rgb(74, 71, 71);
+                background-color:rgb(99, 96, 96);
+                margin:0px 30px 0px 30px;
+            }
+            input[type=text],select,input[type=number],input[type=date]
+            {
+                width: 50%;
+                padding: 12px 20px;
+                margin: 8px 0px;
+                display: inline-block;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+            }
+            textarea
+            {
+                width: 50%;
+                padding: 12px 20px;
+                margin: 8px 0px;
+                display: inline-block;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+                font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                font-size: 15px;
+            }
+
+            input[type=submit]
+            {
+                width: 50%;
+                background-color: black;
+                color: #fafafa;
+                padding: 14px 20px;
+                margin: 8px 0;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                font-weight: bolder; 
+            }
+            input[type=submit]:hover
+            {
+                background-color: #595959;
+            }
+            a
+            {
+                color:blue;
+                text-decoration: none;
+            } 
+            .drop1
+            {
+                padding: 12px 20px;
+                margin: 8px 0px; 
+            }
+            
+           
+        </style>
+    </head>
+    
+    <header>
+        <center><img src="logofinal.png" width="8%" >
+        <hr> 
+    </header>
+    <body>
+        <center>
+        <div class="navigation">
+            <a href="#" class="item">Home</a>
+            <a href="#" class="item">Dogs</a>
+            <a href="#" class="item">Cats</a>
+            <a href="#" class="item">Consultation</a>
+            <a href="#" class="item">About</a>
+            <a href="#" class="item">Contact</a>
+        </div>
+
+        <div id="div2">
+            <h2>Talk to Vet</h2>
+            <form action="/action_page.php">
+                
+                    <select name="gender" id="gender">
+                        <option value="" disabled selected hidden>Select your pet..</option>
+                        <option value="Female" class="drop1">Dog</option>
+                        <option value="Male" class="drop1">Cat</option>
+                        <option value="Not known" class="drop1">Others</option>
+                      </select>
+                    <select name="species" id="species">
+                        <option value="" disabled selected hidden>Select gender...</option>
+                        <option value="Female" class="drop1">Female</option>
+                        <option value="Male" class="drop1">Male</option>
+                        <option value="Not known" class="drop1">Not known</option>
+                    </select>
+                <input type="number" placeholder="Pet age" size="30cm">
+                <input type="number" placeholder="Pet weight" size="30cm"><br>
+                <input type="date"  size="30cm"><br>
+                <select name="timepick" id="timepick">
+                    <option value="" disabled selected hidden>Choose a time slot</option>
+                    <option value="time1" class="drop1">09:00am - 09:30am</option>
+                    <option value="time2" class="drop1">10:00am - 10:30am</option>
+                    <option value="time3" class="drop1">11:00am - 11:30am</option>
+                    <option value="time4" class="drop1">12:00pm - 12:30pm</option>
+                    <option value="time4" class="drop1">02:00pm - 02:30pm</option>
+                    <option value="time4" class="drop1">03:00pm - 03:30pm</option>
+                    <option value="time4" class="drop1">04:00pm - 04:30pm</option>   
+                </select>
+               
+                <textarea placeholder="Describe the concern about your pet in short" size="30cm" rows="8" cols="30"></textarea><br> 
+                <input type="submit" value="Book Now">      
+            </form>   
+        </div>  
+        <p style="font-size:12.8px;">© Copyright 2022  |  All rights reserved | www.pawsown.in</p>
+        </center>
+    </body>
+</html>

@@ -1,0 +1,26 @@
+<script>
+    
+    function check_email() {
+        var pattern = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+        var email = $("#email").val();
+        if (pattern.test(email) && email !== "") {
+            $("#email_error_message").hide();
+            $("#email").css("border-bottom", "2px solid #34F458");
+        } else {
+            $("#email_error_message").html("Email should be in proper format and cannot be blank");
+            $("#email_error_message").show();
+            $("#email").css("border-bottom", "2px solid #F90A0A");
+            error_email = true;
+        }
+    }
+    </script>
+
+
+
+
+<form>
+<input type="text" pattern="[a-zA-Z ]*$" style="text-transform: capitalize;"><br>
+<input type="email" onfocusout="check_email()"  name="cusemail" id="email" placeholder="E-mail ID (Eg. user@domain)" size="30cm" pattern="[a-z0-9]+[a-z.0-9]+[a-z0-9]+@[a-z]+\.[a-z]{2,3}$" required><br>
+<div id="email_error_message"></div>
+<input type="submit">
+</form>

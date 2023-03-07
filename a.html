@@ -1,0 +1,15 @@
+<form action="login.php" method="POST">
+                    <img src="logofinal.png" style="width:30%;text-align: center;"><br> 
+                    <h2>Create an Account</h2> 
+                    <p style="font-size: 13px;">Already have an account?<a href="login.php"> Login here</a></p>    
+                    <input type="text" name="cusname" placeholder="Enter your name" size="30cm" required><br>
+                    <input type="text" name="cusemail" id="email" placeholder="E-mail ID" size="30cm" required onmouseleave ="return validateemail"><br>
+                    <input type="tel" name="cusphone" placeholder="Enter your Mobile No."size="30cm" minlength="10" maxlength="10" required><br> 
+                    <input type="password" name="cuspassword" placeholder="Password (minimum 6 characters)" minlength="6" size="30cm" required><br>
+                    <input type="password" placeholder="Re-enter your password" size="30cm" required><br>
+                    <input type="submit" value="SIGN UP" name="submitdata">
+                    <p style="font-size: 13px;">By signing up, you agree to the 
+                        <a href="">Terms of Service</a> and <a href="">Privacy Policy</a>, 
+                        including Cookie Use.
+                    </p>
+                </form>

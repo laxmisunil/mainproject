@@ -1,0 +1,29 @@
+
+<html>
+
+<style>
+    .alert {
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+}
+
+    </style>
+    <script>
+        function showdiv()
+        {
+            document.getElementById('s').style.display = "block";
+        }
+
+
+</script>
+    <form>
+    <div id="s" style="display:none" class="alert">
+       
+        <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
+      </div>
+
+
+    <input type="submit" onclick="showdiv()">
+</form>
+</html>

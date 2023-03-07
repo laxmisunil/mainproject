@@ -1,0 +1,74 @@
+<html>
+    <head>
+        <style>
+
+            #stage {
+              margin: 1em auto;
+              width: 382px;
+              height: 292px;
+            }
+          
+            #stage a {
+              position: absolute;
+            }
+            #stage a img {
+              padding: 10px;
+              border: 1px solid #ccc;
+              background: #fff;
+            }
+          
+            #stage a:nth-of-type(1) {
+              animation-name: fader;
+              animation-delay: 4s;
+              animation-duration: 1s;
+              z-index: 20;
+            }
+            #stage a:nth-of-type(2) {
+              z-index: 10;
+            }
+            #stage a:nth-of-type(n+3) {
+              display: none;
+            }
+          
+            @keyframes fader {
+              from { opacity: 1.0; }
+              to   { opacity: 0.0; }
+            }
+          
+          </style>
+          <script>
+
+            window.addEventListener("DOMContentLoaded", function(e) {
+          
+              // Original JavaScript code by Chirp Internet: chirpinternet.eu
+              // Please acknowledge use of this code by including this header.
+          
+              var stage = document.getElementById("stage");
+              var fadeComplete = function(e) { stage.appendChild(arr[0]); };
+              var arr = stage.getElementsByTagName("a");
+              for(var i=0; i < arr.length; i++) {
+                arr[i].addEventListener("animationend", fadeComplete, false);
+              }
+          
+            }, false);
+          
+          </script>
+
+
+    </head>
+    <body>
+        <div id="stage">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuQI2R39TQ4BZ0QoCaiAL0Nqcq2klJs1IWrA&usqp=CAU" width="360" height="270">
+            <img src="2.jpg" width="360" height="270">
+            <img src="3.jpg" width="360" height="270">
+            <img src="4.jpg" width="360" height="270">
+            <img src="5.jpg" width="360" height="270">
+            <img src="6.jpg" width="360" height="270">
+            <img src="7.jpg" width="360" height="270">
+            <img src="8.jpg" width="360" height="270">
+            </div>
+
+    </body>
+
+
+</html>
