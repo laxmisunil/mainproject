@@ -1,0 +1,196 @@
+<html>
+
+   
+<head>
+        <title>Home</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <style>
+            body
+            {
+                font-size: 15px;
+                font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            }
+            .navigation
+            {
+                display: flex;
+                margin-top: 20px;
+                margin-left: 5.8cm;
+                margin-right:7.8cm;  
+            }
+            .item
+            {
+                padding: 2px 30px 2px 30px;
+                text-decoration: none;
+                color: black;
+            }
+            .item:hover
+            {
+                color: rgb(197, 110, 3);
+            }
+            .div2
+            {
+                background-color:rgb(248, 238, 223);
+                padding: 2px 9px 2px 9px;
+                margin-top: 15px;
+                font-weight: lighter;
+                font-size: 30px;
+            }
+            hr
+            {
+                height:1px;
+                border-width:0;
+                color:rgb(74, 71, 71);
+                background-color:rgb(99, 96, 96);
+                margin:0px 30px 0px 30px;
+            }
+            .link
+            {
+                text-decoration: none;
+                color: black;
+            }
+            .link:hover
+            {
+                color:blue;
+            }
+            #s
+            {
+                border-top:none;
+                border-left:none;
+                border-right: none;
+                border-bottom:1px solid black;
+                margin-top:20px;
+                margin-left: 30px;
+                padding: 4px 32px 4px 25px;
+                background-image: url("search-icon.webp");
+                background-size: 10%;
+                background-repeat: no-repeat;   
+            }
+            #s:focus
+            {
+                outline:none;
+            }
+            #s::placeholder
+            {
+                padding-left: 0px;
+            }
+            #a1
+            {
+                text-decoration: none;
+                color: black;
+                font-size: 15px;
+            }
+            #a1:hover
+            {
+                color:rgb(197, 110, 3);
+            }
+            h5
+            {
+                margin-bottom: 3px;
+            }
+           
+      
+        .center {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+        #loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+ 
+  animation: spin 0.0002s linear infinite;
+}
+
+/* Safari */
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(1000deg); }
+}
+            
+        </style>
+         <script>
+            document.onreadystatechange = function() {
+                if (document.readyState !== "complete") {
+                    document.querySelector(
+                      "body").style.visibility = "hidden";
+                    document.querySelector(
+                      "#loader").style.visibility = "visible";
+                } else {
+                    document.querySelector(
+                      "#loader").style.display = "none";
+                    document.querySelector(
+                      "body").style.visibility = "visible";
+                }
+            };
+        </script>
+
+    </head>
+    <div id="loader" class="center"></div>  
+    <body>
+         
+    
+    <header>
+        <center><img src="logofinal.png" width="8%" >
+        <hr> 
+    </header>
+    
+        <center>
+            
+            <div style="display:flex">
+                <form>
+                    <input id="s" type="search" placeholder="Search...">       
+                </form>
+        <div class="navigation">
+            <a href="#" class="item">Home</a>
+            <a href="#" class="item">Customers</a>
+            <a href="#" class="item">Veterinarian</a>
+        </div>
+        <div id="div3" style="display:flex">
+        <img src="adminicon.webp" width="31px" height="30px" style="margin-top:17px">
+        <a id="a1" href="#" style="margin-left: 4px;margin-top: 24px;">My Account</a>
+        </div>
+        </div>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+
+<div id="myPlot" style="width:100%"></div>
+
+<!--<script>
+var xArray = [50,60,70,80,90,100,110,120,130,140,150];
+var yArray = [7,8,8,9,9,9,10,11,14,14,15];
+
+// Define Data
+var data = [{
+  x:xArray,
+  y:yArray,
+  mode:"markers"
+}];
+
+// Define Layout
+var layout = {
+  xaxis: {range: [40, 160], title: "Days"},
+  yaxis: {range: [5, 16], title:"Revenue"},  
+  title: "Sales vs. Month"
+};
+
+// Display using Plotly
+Plotly.newPlot("myPlot", data, layout);
+</script>
+-->
+
+        
+      
+        <center>
+        <p style="font-size:12.8px">© Copyright 2022  |  All rights reserved | www.pawsown.in</p>
+    </center>
+        
+    </body>
+</html>
